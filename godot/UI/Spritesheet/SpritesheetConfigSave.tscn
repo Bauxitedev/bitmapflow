@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UI/Spritesheet/SpritesheetConfigBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/Spritesheet/SpritesheetConfigSave.gd" type="Script" id=2]
+[ext_resource path="res://Icon.png" type="Texture" id=3]
+
+[node name="SpritesheetConfigSave" instance=ExtResource( 1 )]
+window_title = "Save spritesheet..."
+script = ExtResource( 2 )
+
+[node name="SpritesheetView" type="TextureRect" parent="HBox/Panel2/MarginContainer" index="0"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1582.0
+margin_bottom = 1026.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6

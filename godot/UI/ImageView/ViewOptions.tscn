@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/ImageView/ViewOptions.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="ViewOptions" type="Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -50.0
+margin_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 100, 30 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 10
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pixelmode" type="CheckBox" parent="VBox"]
+margin_top = 978.0
+margin_right = 121.0
+margin_bottom = 1002.0
+pressed = true
+text = "Pixel art mode"
+
+[node name="HSeparator" type="HSeparator" parent="VBox"]
+visible = false
+modulate = Color( 1, 1, 1, 0.32549 )
+margin_top = 988.0
+margin_right = 121.0
+margin_bottom = 992.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FPS" type="SpinBox" parent="VBox"]
+margin_top = 1012.0
+margin_right = 121.0
+margin_bottom = 1036.0
+size_flags_horizontal = 3
+max_value = 60.0
+step = 0.01
+value = 12.0
+rounded = true
+suffix = "FPS"
+
+[node name="ImageInfo" type="Label" parent="VBox"]
+margin_top = 1046.0
+margin_right = 121.0
+margin_bottom = 1060.0
+align = 2
+autowrap = true
+[connection signal="toggled" from="VBox/Pixelmode" to="." method="_on_Pixelmode_toggled"]
+[connection signal="value_changed" from="VBox/FPS" to="." method="_on_FPS_value_changed"]

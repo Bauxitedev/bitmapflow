@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/Menu.gd" type="Script" id=1]
+
+[node name="Menu" type="HBoxContainer"]
+margin_right = 1898.0
+margin_bottom = 20.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="File" type="MenuButton" parent="."]
+margin_right = 35.0
+margin_bottom = 20.0
+text = "File"
+items = [ "Load", null, 0, false, false, 0, 0, null, "", true, "Load animated GIF...", null, 0, false, false, 1, 0, null, "", false, "Load spritesheet...", null, 0, false, false, 2, 0, null, "", false, "Load separate frames...", null, 0, false, false, 3, 0, null, "", false, "Export", null, 0, false, false, 4, 0, null, "", true, "Export animated GIF...", null, 0, false, false, 5, 0, null, "", false, "Export spritesheet...", null, 0, false, false, 6, 0, null, "", false, "Export separate frames...", null, 0, false, false, 7, 0, null, "", false, "", null, 0, false, false, 8, 0, null, "", true, "Quit", null, 0, false, false, 9, 0, null, "", false ]
+
+[node name="About" type="Button" parent="."]
+margin_left = 39.0
+margin_right = 89.0
+margin_bottom = 20.0
+text = "About"
+flat = true
+[connection signal="pressed" from="About" to="." method="_on_About_pressed"]

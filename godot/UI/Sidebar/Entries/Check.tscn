@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/Sidebar/Entries/EntryBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/Sidebar/Entries/Check.gd" type="Script" id=2]
+
+[node name="EntryBase" instance=ExtResource( 1 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -50.0
+script = ExtResource( 2 )
+
+[node name="MarginContainer" parent="." index="0"]
+margin_right = 1842.0
+margin_bottom = 1080.0
+
+[node name="Label" parent="MarginContainer" index="0"]
+margin_top = 530.0
+margin_right = 1832.0
+margin_bottom = 550.0
+
+[node name="CheckBox" type="CheckBox" parent="." index="1"]
+margin_left = 1846.0
+margin_right = 1870.0
+margin_bottom = 1080.0
+[connection signal="toggled" from="CheckBox" to="." method="_on_CheckBox_toggled"]

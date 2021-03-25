@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UI/Spritesheet/SpritesheetView.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/Spritesheet/SpritesheetConfigBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/Spritesheet/SpritesheetConfigLoad.gd" type="Script" id=3]
+
+[node name="SpritesheetConfigLoad" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+
+[node name="SpritesheetView" parent="HBox/Panel2/MarginContainer" index="0" instance=ExtResource( 1 )]
+margin_bottom = 1026.0
+[connection signal="rects_changed" from="." to="HBox/Panel2/MarginContainer/SpritesheetView" method="_on_SpritesheetConfigLoad_rects_changed"]
+[connection signal="mouse_clicked_at" from="HBox/Panel2/MarginContainer/SpritesheetView" to="." method="_on_SpritesheetView_mouse_clicked_at"]

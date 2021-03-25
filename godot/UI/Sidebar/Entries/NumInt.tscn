@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/Sidebar/Entries/NumInt.gd" type="Script" id=1]
+[ext_resource path="res://UI/Sidebar/Entries/EntryBase.tscn" type="PackedScene" id=2]
+
+[node name="NumInt" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+
+[node name="MarginContainer" parent="." index="0"]
+margin_right = 170.0
+
+[node name="Label" parent="MarginContainer" index="0"]
+margin_right = 160.0
+
+[node name="TextEdit" type="SpinBox" parent="." index="1"]
+margin_left = 174.0
+margin_right = 300.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+max_value = 2000.0
+value = 512.0
+rounded = true
+align = 1
+[connection signal="value_changed" from="TextEdit" to="." method="_on_TextEdit_value_changed"]

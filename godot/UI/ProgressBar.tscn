@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UI/ProgressBar.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/FontSmall.tres" type="DynamicFont" id=2]
+[ext_resource path="res://UI/Resources/StyleboxError.tres" type="StyleBox" id=3]
+[ext_resource path="res://UI/Resources/StyleboxMessage.tres" type="StyleBox" id=4]
+
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.188235, 0.705882, 0.607843, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 0 )
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color( 0, 0, 0, 0.356863 )
+shadow_size = 1
+anti_aliasing = false
+anti_aliasing_size = 2
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.2937, 0.33, 0.323345, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 0 )
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color( 0, 0, 0, 0.356863 )
+shadow_size = 1
+anti_aliasing = false
+anti_aliasing_size = 2
+
+[node name="ProgressBar" type="ProgressBar"]
+margin_top = 1028.0
+margin_right = 1898.0
+margin_bottom = 1058.0
+rect_min_size = Vector2( 0, 25 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+max_value = 1.0
+step = 0.0
+value = 0.25
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ErrorContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="ErrorContainer"]
+margin_left = 894.0
+margin_top = 7.0
+margin_right = 1004.0
+margin_bottom = 22.0
+custom_styles/panel = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="ErrorContainer/PanelContainer"]
+margin_right = 110.0
+margin_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 2 )
+text = "your error goes here"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="MessageContainer"]
+margin_left = 885.0
+margin_top = 7.0
+margin_right = 1012.0
+margin_bottom = 22.0
+custom_styles/panel = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="MessageContainer/PanelContainer"]
+margin_right = 127.0
+margin_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 2 )
+text = "your message goes here"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]

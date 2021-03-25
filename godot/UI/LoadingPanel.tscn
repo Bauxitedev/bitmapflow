@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Textures/LoadingIcon.png" type="Texture" id=2]
+[ext_resource path="res://UI/LoadingPanel.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="LoadingPanel" type="PanelContainer"]
+anchor_right = 1.0
+margin_right = 0.00012207
+margin_bottom = 40.0
+rect_min_size = Vector2( 200, 40 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 1920.0
+margin_bottom = 74.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingIcon" type="TextureRect" parent="HBoxContainer"]
+margin_right = 74.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 74, 74 )
+rect_pivot_offset = Vector2( 37, 37 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6

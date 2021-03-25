@@ -1,0 +1,35 @@
+[package]
+authors = ["Bauxitedev"]
+build = "build.rs"
+edition = "2018"
+name = "bitmapflow-rust"
+version = "1.0.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+anyhow = "1.0.38"
+approx = "0.4.0"
+bracket-color = "0.8.2"
+crossbeam = "0.8.0"
+crossbeam-channel = "0.5.0"
+gdnative = "0.9.3"
+gif = "0.11.1"
+gif-dispose = "3.1.1"
+image = "0.23.13"
+imgref = "1.7.1"
+itertools = "0.10.0"
+once_cell = "1.5.2"
+opencv = {version = "0.49.1", features = ["clang-runtime", "contrib"]}# see https://github.com/twistedfall/opencv-rust/issues/187
+rand = "0.8.3"
+rayon = "1.5.0"
+rgb = "0.8.25"
+serde = {version = "1.0.123", features = ["derive"]}
+serde_json = "1.0.62"
+
+[build-dependencies]
+anyhow = "1.0.38"
+vergen = "5"

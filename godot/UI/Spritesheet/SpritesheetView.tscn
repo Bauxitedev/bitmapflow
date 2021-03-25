@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Icon.png" type="Texture" id=1]
+[ext_resource path="res://UI/Spritesheet/SpritesheetView.gd" type="Script" id=2]
+[ext_resource path="res://UI/Spritesheet/Spritesheet.gd" type="Script" id=3]
+[ext_resource path="res://UI/Spritesheet/SpritesheetTextureRect.gd" type="Script" id=4]
+
+[sub_resource type="ViewportTexture" id=1]
+viewport_path = NodePath("Viewport")
+
+[node name="SpritesheetView" type="Panel"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1582.0
+margin_bottom = 961.0
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 250, 250 )
+usage = 0
+render_target_v_flip = true
+
+[node name="Spritesheet" type="Sprite" parent="Viewport"]
+texture = ExtResource( 1 )
+centered = false
+script = ExtResource( 3 )
+
+[node name="TextureRect" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_default_cursor_shape = 3
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+texture = SubResource( 1 )
+[connection signal="gui_input" from="TextureRect" to="TextureRect" method="_on_TextureRect_gui_input"]
+[connection signal="mouse_clicked_at" from="TextureRect" to="." method="_on_TextureRect_mouse_clicked_at"]

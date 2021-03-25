@@ -1,0 +1,43 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
+
+[application]
+
+config/name="Bitmapflow"
+run/main_scene="res://Main.tscn"
+boot_splash/image="res://Textures/Splash.png"
+boot_splash/fullsize=false
+config/icon="res://Icon.png"
+
+[autoload]
+
+Startup="*res://Autoload/Startup.gd"
+GlobalHolder="*res://Autoload/GlobalHolder.gdns"
+SpritesheetGenerator="*res://Autoload/SpritesheetGenerator.gdns"
+ImageHolder="*res://Autoload/ImageHolder.gdns"
+ImageProcessor="*res://Autoload/ImageProcessor.gdns"
+ImageSaver="*res://Autoload/ImageSaver.gdns"
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/stretch/aspect="expand"
+
+[rendering]
+
+quality/2d/use_pixel_snap=true
+environment/default_clear_color=Color( 0.25098, 0.27451, 0.301961, 1 )
+environment/default_environment="res://DefaultEnv.tres"

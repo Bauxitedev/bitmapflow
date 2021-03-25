@@ -1,0 +1,10 @@
+.mono
+.import
+bin
+examples/_nonfree_gifs
+examples/_interpolated
+
+*.dll
+*.so
+*.afphoto
+*.blend

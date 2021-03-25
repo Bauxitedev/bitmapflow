@@ -1,0 +1,140 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/ImageView/IntegerTextureRect.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/ImageView/ImageView.gd" type="Script" id=2]
+[ext_resource path="res://UI/Resources/StyleboxBG.tres" type="StyleBox" id=3]
+[ext_resource path="res://UI/LoadingPanel.tscn" type="PackedScene" id=4]
+
+[node name="ImageView" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 300, 0 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxA" type="VBoxContainer" parent="."]
+margin_right = 958.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Original" type="Label" parent="HBoxA"]
+margin_right = 958.0
+margin_bottom = 14.0
+size_flags_vertical = 5
+text = "Original"
+align = 1
+valign = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxA"]
+margin_top = 18.0
+margin_right = 958.0
+margin_bottom = 1080.0
+size_flags_vertical = 3
+custom_constants/margin_right = 3
+custom_constants/margin_top = 3
+custom_constants/margin_left = 3
+custom_constants/margin_bottom = 3
+
+[node name="Panel" type="Panel" parent="HBoxA/MarginContainer"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 955.0
+margin_bottom = 1059.0
+size_flags_vertical = 3
+custom_styles/panel = ExtResource( 3 )
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxA/MarginContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TexRect" parent="HBoxA/MarginContainer/Panel/MarginContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 947.0
+margin_bottom = 1051.0
+size_flags_vertical = 3
+
+[node name="HBoxB" type="VBoxContainer" parent="."]
+margin_left = 962.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Interpolated" type="Label" parent="HBoxB"]
+margin_right = 958.0
+margin_bottom = 14.0
+size_flags_vertical = 5
+text = "Interpolated"
+align = 1
+valign = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxB"]
+margin_top = 18.0
+margin_right = 958.0
+margin_bottom = 1080.0
+size_flags_vertical = 3
+custom_constants/margin_right = 3
+custom_constants/margin_top = 3
+custom_constants/margin_left = 3
+custom_constants/margin_bottom = 3
+
+[node name="Panel" type="Panel" parent="HBoxB/MarginContainer"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 955.0
+margin_bottom = 1059.0
+size_flags_vertical = 3
+custom_styles/panel = ExtResource( 3 )
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxB/MarginContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TexRect" parent="HBoxB/MarginContainer/Panel/MarginContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 947.0
+margin_bottom = 1051.0
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxB/MarginContainer/Panel/MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 947.0
+margin_bottom = 1051.0
+custom_constants/margin_right = 15
+custom_constants/margin_top = 15
+custom_constants/margin_left = 15
+custom_constants/margin_bottom = 0
+
+[node name="LoadingPanel" parent="HBoxB/MarginContainer/Panel/MarginContainer/MarginContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 927.0
+margin_bottom = 89.0
+size_flags_vertical = 0

@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/Spritesheet/SpritesheetConfigBase.gd" type="Script" id=2]
+
+[node name="SpritesheetConfigBase" type="ConfirmationDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 500, 500 )
+window_title = ""
+resizable = true
+dialog_hide_on_ok = false
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBox" type="HSplitContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -36.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="HBox"]
+margin_right = 300.0
+margin_bottom = 1036.0
+rect_min_size = Vector2( 300, 0 )
+
+[node name="MarginContainer" type="MarginContainer" parent="HBox/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sidebar" type="VBoxContainer" parent="HBox/Panel/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 290.0
+margin_bottom = 1026.0
+size_flags_horizontal = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="HBox"]
+margin_left = 312.0
+margin_right = 1904.0
+margin_bottom = 1036.0
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBox/Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ImgInfo" type="Label" parent="HBox/Panel2/MarginContainer"]
+margin_left = 10.0
+margin_top = 995.0
+margin_right = 1582.0
+margin_bottom = 1026.0
+size_flags_horizontal = 3
+size_flags_vertical = 10
+text = "img info goes here
+"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="confirmed" from="." to="." method="_on_SpritesheetConfigBase_confirmed"]
+[connection signal="popup_hide" from="." to="." method="_on_SpritesheetConfigBase_popup_hide"]

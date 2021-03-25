@@ -1,0 +1,90 @@
+{ "frames": {
+   "explosion-animation 0.ase": {
+    "frame": { "x": 0, "y": 0, "w": 112, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 112, "h": 128 },
+    "sourceSize": { "w": 112, "h": 128 },
+    "duration": 70
+   },
+   "explosion-animation 1.ase": {
+    "frame": { "x": 112, "y": 0, "w": 112, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 112, "h": 128 },
+    "sourceSize": { "w": 112, "h": 128 },
+    "duration": 70
+   },
+   "explosion-animation 2.ase": {
+    "frame": { "x": 224, "y": 0, "w": 112, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 112, "h": 128 },
+    "sourceSize": { "w": 112, "h": 128 },
+    "duration": 70
+   },
+   "explosion-animation 3.ase": {
+    "frame": { "x": 336, "y": 0, "w": 112, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 112, "h": 128 },
+    "sourceSize": { "w": 112, "h": 128 },
+    "duration": 70
+   },
+   "explosion-animation 4.ase": {
+    "frame": { "x": 448, "y": 0, "w": 112, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 112, "h": 128 },
+    "sourceSize": { "w": 112, "h": 128 },
+    "duration": 70
+   },
+   "explosion-animation 5.ase": {
+    "frame": { "x": 560, "y": 0, "w": 112, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 112, "h": 128 },
+    "sourceSize": { "w": 112, "h": 128 },
+    "duration": 70
+   },
+   "explosion-animation 6.ase": {
+    "frame": { "x": 672, "y": 0, "w": 112, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 112, "h": 128 },
+    "sourceSize": { "w": 112, "h": 128 },
+    "duration": 70
+   },
+   "explosion-animation 7.ase": {
+    "frame": { "x": 784, "y": 0, "w": 112, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 112, "h": 128 },
+    "sourceSize": { "w": 112, "h": 128 },
+    "duration": 70
+   },
+   "explosion-animation 8.ase": {
+    "frame": { "x": 896, "y": 0, "w": 112, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 112, "h": 128 },
+    "sourceSize": { "w": 112, "h": 128 },
+    "duration": 70
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.9",
+  "image": "/Users/luiszuno/Documents/ansimuz resources/ART PACKS/Collections/side view Patreon Collection/1-sci-fi/Sprites/Explosion-Files/spritesheet/explosion-animation.png",
+  "format": "I8",
+  "size": { "w": 1008, "h": 128 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Layer", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

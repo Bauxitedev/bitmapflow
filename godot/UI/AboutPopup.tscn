@@ -1,0 +1,106 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Textures/Splash_highres.png" type="Texture" id=1]
+[ext_resource path="res://UI/AboutPopup.gdns" type="Script" id=2]
+[ext_resource path="res://Fonts/FontSmall.tres" type="DynamicFont" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+corner_radius_top_left = 11
+corner_radius_top_right = 11
+corner_radius_bottom_right = 11
+corner_radius_bottom_left = 11
+expand_margin_left = 22.0
+expand_margin_right = 22.0
+expand_margin_top = 22.0
+expand_margin_bottom = 22.0
+shadow_color = Color( 0, 0, 0, 0.207843 )
+shadow_size = 4
+
+[node name="AboutPopup" type="PopupDialog"]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 238.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+margin_right = 1920.0
+margin_bottom = 1186.0
+size_flags_vertical = 3
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="MadeByBauxitedev" type="RichTextLabel" parent="VBoxContainer"]
+margin_top = 1186.0
+margin_right = 1920.0
+margin_bottom = 1269.0
+bbcode_enabled = true
+bbcode_text = "
+[center][font=Fonts/FontBig.tres]Made by Bauxitedev[/font]
+Made with Godot Engine and powered by Rust
+[/center]"
+text = "
+Made by Bauxitedev
+Made with Godot Engine and powered by Rust
+"
+fit_content_height = true
+scroll_active = false
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 1269.0
+margin_right = 1920.0
+margin_bottom = 1273.0
+custom_constants/margin_right = 50
+custom_constants/margin_left = 50
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MarginContainer"]
+margin_left = 50.0
+margin_right = 1870.0
+margin_bottom = 4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FollowMe" type="RichTextLabel" parent="VBoxContainer"]
+margin_top = 1273.0
+margin_right = 1920.0
+margin_bottom = 1318.0
+bbcode_enabled = true
+bbcode_text = "
+[center]If you like this program, you can [url=https://twitter.com/bauxitedev]follow me on Twitter for updates[/url], [url=https://www.youtube.com/c/Bauxitedev]subscribe on YouTube[/url], and/or [url=https://ko-fi.com/bauxite]support me by buying me a coffee[/url]. Thank you![/center]
+"
+text = "
+If you like this program, you can follow me on Twitter for updates, subscribe on YouTube, and/or support me by buying me a coffee. Thank you!
+"
+fit_content_height = true
+scroll_active = false
+
+[node name="ExtraInfo" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[right]todo put your extra info here[/right]"
+text = "todo put your extra info here"
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="meta_clicked" from="VBoxContainer/FollowMe" to="." method="_on_followme_meta_clicked"]

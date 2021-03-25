@@ -1,0 +1,5 @@
+{
+    "rust-analyzer.cargo.loadOutDirsFromCheck": true,
+    "editor.formatOnSave": true,
+    "git.allowForcePush": true,
+}
