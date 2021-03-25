@@ -19,13 +19,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    
     - uses: actions/checkout@v2
+    
+    - name: Apt-get update
+      run: sudo apt-get update
+      
     - name: Install dependencies
-      run: 
-        sudo apt-get update
-        DEBIAN_FRONTEND=noninteractive sudo apt-get install -y clang libclang-dev libopencv-contrib4.2 libopencv-dev curl 
+      run: DEBIAN_FRONTEND=noninteractive sudo apt-get install -y clang libclang-dev libopencv-contrib4.2 libopencv-dev curl 
+      
     - name: Build
       run: cargo build --verbose
+      
     - name: Clippy
       uses: actions-rs/clippy-check@v1.0.7
       with:
