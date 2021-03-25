@@ -28,6 +28,13 @@ jobs:
     - name: Install dependencies
       run: DEBIAN_FRONTEND=noninteractive sudo apt-get install -y clang libclang-dev libopencv-contrib4.2 libopencv-dev curl 
       
+    - name: Install Rust toolchain
+      uses: actions-rs/toolchain@v1
+      with:
+            toolchain: nightly
+            components: clippy
+            override: true
+      
     - name: Build
       run: cargo build --verbose
       
