@@ -43,6 +43,8 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         toolchain: nightly 
+        args: -all-features --manifest-path rust/Cargo.toml
+        # see https://github.com/actions-rs/clippy-check/issues/28
         
     - name: markdown-link-check
       uses: gaurav-nelson/github-action-markdown-link-check@1.0.12
