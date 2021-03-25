@@ -3,7 +3,7 @@
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/bauxite)
 
-Bitmapflow is a tool to help you generate inbetweens for animated sprites. In other words, it makes your animations smoother. It uses [optical flow](https://en.wikipedia.org/wiki/Optical_flow) to try to guess how the pixels move between frames, and blends them accordingly. The results are far from perfect, and probably require some editing by hand afterwards, but sometimes it can produce decent results.
+Bitmapflow is a tool to help you generate [inbetweens](https://en.wikipedia.org/wiki/Inbetweening) for animated sprites. In other words, it makes your animations smoother. It uses [optical flow](https://en.wikipedia.org/wiki/Optical_flow) to try to guess how the pixels move between frames, and blends them accordingly. The results are far from perfect, and probably require some editing by hand afterwards, but sometimes it can produce decent results.
 
 It supports loading and saving animated gifs, spritesheets and individual frames.
 
@@ -21,7 +21,7 @@ TODO put your video here
 
 A short summary:
 
-1. Drag and drop your image into the program. It can be an animated gif, a spritesheet, or individual frames. If you don't have any sprite laying around you can find some in the `examples` folder in this repository.
+1. Drag and drop your image into the program. It can be an animated gif, a spritesheet, or individual frames. If you don't have any sprites laying around you can find some in the `examples` folder in this repository.
 2. Tweak the parameters.
 3. Open the File menu to export the results as an animated gif, a spritesheet, or individual frames.
 
