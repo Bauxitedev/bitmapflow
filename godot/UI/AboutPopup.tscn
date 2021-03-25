@@ -82,10 +82,10 @@ margin_right = 1920.0
 margin_bottom = 1318.0
 bbcode_enabled = true
 bbcode_text = "
-[center]If you like this program, you can [url=https://twitter.com/bauxitedev]follow me on Twitter for updates[/url], [url=https://www.youtube.com/c/Bauxitedev]subscribe on YouTube[/url], and/or [url=https://ko-fi.com/bauxite]support me by buying me a coffee[/url]. Thank you![/center]
+[center]If you like this program, you can [url=https://github.com/Bauxitedev/bitmapflow]check the Github repository for updates[/url], [url=https://twitter.com/bauxitedev]follow me on Twitter (@bauxitedev)[/url], [url=https://www.youtube.com/c/Bauxitedev]subscribe on YouTube[/url], and/or [url=https://ko-fi.com/bauxite]support me by buying me a coffee[/url]. Thank you![/center]
 "
 text = "
-If you like this program, you can follow me on Twitter for updates, subscribe on YouTube, and/or support me by buying me a coffee. Thank you!
+If you like this program, you can check the Github repository for updates, follow me on Twitter (@bauxitedev), subscribe on YouTube, and/or support me by buying me a coffee. Thank you!
 "
 fit_content_height = true
 scroll_active = false
