@@ -15,7 +15,7 @@ Example:
 
 [You can download the executables here](https://github.com/Bauxitedev/bitmapflow/releases). (Windows only for now). You'll need to install the [Visual Studio Redistributable](https://aka.ms/vs/16/release/vc_redist.x64.exe) first (unless you already have Visual Studio 2015 or newer installed). Other than that, it should work out of the box.
 
-[A video tutorial on how to use the program can be found here.](todo_invalid_url_put_youtube_video_here)
+[A video tutorial on how to use the program can be found here.](https://youtu.be/rC359dDAMiI)
 
 A short summary:
 
@@ -40,7 +40,7 @@ A short explanation of the parameters follows.
 
 I could explain all the advanced parameters in detail, but since they describe internal optical flow algorithm parameters, they require some background knowledge about the algorithm before they start to make sense. You can check the [official documentation for SimpleFlow](https://docs.opencv.org/master/d2/d84/group__optflow.html#gaf23c367519903ed2384e9532e43c7032) or the [official documentation for DenseRLOF](https://docs.opencv.org/master/d2/d84/group__optflow.html#ga0fc536362c239654322d9015f6efcecd) for more details.
 
-You'll need to experiment a lot to find parameters that work well, although the default parameters seem to work decently for a lot of sprites. [See my video tutorial on the subject.](todo_invalid_url_put_youtube_video_here)
+You'll need to experiment a lot to find parameters that work well, although the default parameters seem to work decently for a lot of sprites. [See my video tutorial on the subject.](https://youtu.be/rC359dDAMiI)
 
 ### Tips
 
