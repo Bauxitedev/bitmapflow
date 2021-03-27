@@ -20,6 +20,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
 # Update PATH for cargo
 ENV RUSTUP_HOME=/usr/local/rustup \
     CARGO_HOME=/usr/local/cargo \
+    RUSTFLAGS="-C codegen-units=1" \
+    CARGO_PROFILE_RELEASE_LTO=fat \
     PATH=/usr/local/cargo/bin:$PATH
 
 # Install Rust toolchain, see https://rust-lang.github.io/rustup/installation/other.html

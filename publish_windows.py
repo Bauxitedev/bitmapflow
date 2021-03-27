@@ -24,6 +24,13 @@ if os.path.exists(zip_filename_debug):
 pathlib.Path(dst_dir).mkdir(parents=True, exist_ok=True)
 pathlib.Path(dst_dir_debug).mkdir(parents=True, exist_ok=True)
 
+# Build GDNative library with production optimizations
+subprocess.run(
+    ["cargo", "build", "--release"],
+    cwd="rust",
+    env={"RUSTFLAGS": "-C codegen-units=1", "CARGO_PROFILE_RELEASE_LTO": "fat"}
+)
+
 # Copy all dlls
 src_dir = "godot"
 for dll in glob.iglob(os.path.join(src_dir, "*.dll")):
