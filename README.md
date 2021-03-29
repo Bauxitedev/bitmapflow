@@ -60,7 +60,7 @@ If you want to dig through the source code and compile Bitmapflow yourself, you'
 To get it to work, you'll need to install the following things on your system first:
 
 - Godot 3.2.3+
-- Cargo (included in Rustup)
+- Cargo nightly 1.50+ (included in Rustup)
 - OpenCV 4.x (see the documentation of [OpenCV-rust](https://github.com/twistedfall/opencv-rust#getting-opencv) on how to get OpenCV)
 
 I'm going to assume you're on Windows, but technically speaking this should work on other platforms as well, but the details and filenames will be different.
