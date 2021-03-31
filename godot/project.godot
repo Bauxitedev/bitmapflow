@@ -36,6 +36,11 @@ window/size/width=1920
 window/size/height=1080
 window/stretch/aspect="expand"
 
+[logging]
+
+file_logging/enable_file_logging=true
+file_logging/log_path="bitmapflow.log"
+
 [rendering]
 
 quality/2d/use_pixel_snap=true

@@ -3,6 +3,7 @@ use std::fs::File;
 use anyhow::{Error, Result};
 use gdnative::prelude::*;
 use image::{io::Reader as ImageReader, RgbaImage};
+use log::*;
 use rayon::prelude::*;
 
 use crate::frame::{Frame, Frames};
@@ -43,7 +44,7 @@ impl ImageHolder {
         owner.emit_signal("image_loaded", &[self.input_frames.to_variant()]);
     }
 
-    fn load_gif(&mut self, filename: String) -> Result<Frames, Error> {
+    fn load_gif(&mut self, filename: &String) -> Result<Frames, Error> {
         let file = File::open(filename)?;
         let mut gif_opts = gif::DecodeOptions::new();
         gif_opts.set_color_output(gif::ColorOutput::Indexed);
@@ -137,13 +138,13 @@ impl ImageHolder {
 
     #[export]
     fn _on_ui_loaded_gif(&mut self, owner: TRef<'_, Base>, filename: String) {
-        match self.load_gif(filename) {
+        match self.load_gif(&filename) {
             Ok(frames) => {
                 self.output_frames.clear();
                 self.update_input_frames(owner, frames);
             }
             Err(err) => {
-                panic!("failed to load gif: {:?}", err);
+                error!("Failed to load gif called {}: {:?}", filename, err);
             }
         }
     }
@@ -156,7 +157,10 @@ impl ImageHolder {
                 self.update_input_frames(owner, frames);
             }
             Err(err) => {
-                panic!("failed to load separate frames: {:?}", err);
+                error!(
+                    "Failed to load separate frames called {:?}: {:?}",
+                    filenames, err
+                );
             }
         }
     }
@@ -174,7 +178,7 @@ impl ImageHolder {
                 self.update_input_frames(owner, frames);
             }
             Err(err) => {
-                panic!("failed to load spritesheet: {:?}", err);
+                error!("Failed to load spritesheet called {}: {:?}", filename, err);
             }
         }
     }

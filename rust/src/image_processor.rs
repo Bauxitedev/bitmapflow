@@ -8,6 +8,7 @@ use crossbeam_channel::{unbounded, Receiver, Sender};
 use gdnative::prelude::*;
 use image::RgbaImage;
 use itertools::{Either, Itertools};
+use log::*;
 use opencv::{
     core::{Mat, MatTraitManual, Size2i, Vec2f, CV_32FC2},
     optflow::{self, InterpolationType, RLOFOpticalFlowParameter},
@@ -122,7 +123,7 @@ impl ImageProcessor {
                 let mut inner = match lock {
                     Ok(inner) => inner,
                     Err(err) => {
-                        godot_warn!("WARNING: mutex poisoned: {:?}", err);
+                        warn!("WARNING: mutex poisoned: {:?}", err);
                         err.into_inner()
                     }
                 };
@@ -204,7 +205,7 @@ impl ImageProcessor {
                         {
                             Ok(()) => {}
                             Err(err) => {
-                                godot_print!("ERROR: optical flow failed: {:?}", err);
+                                warn!("Optical flow failed: {:?}", err);
                                 error_sender.send(Some(err.to_string())).unwrap();
                                 return;
                             }
@@ -253,7 +254,7 @@ impl ImageProcessor {
                         err_str = static_string.to_string();
                     }
 
-                    godot_print!("ImageProcessor thread had a panic attack: {:?}", err_str);
+                    warn!("ImageProcessor thread had a panic attack: {:?}", err_str);
                     error_sender.send(Some(err_str)).unwrap();
                 }
             }
@@ -312,7 +313,7 @@ impl ImageProcessor {
         let is_busy = match self.inner.try_lock() {
             Err(TryLockError::WouldBlock) => true,
             Err(TryLockError::Poisoned(err)) => {
-                godot_print!("WARNING: mutex poisoned: {:?}", err);
+                warn!("WARNING: mutex poisoned: {:?}", err);
                 false
             }
             _ => false,

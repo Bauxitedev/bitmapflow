@@ -10,10 +10,13 @@ mod global_holder;
 mod image_holder;
 mod image_processor;
 mod image_saver;
+mod logging;
 mod spritesheet_generator;
 mod utility;
 
 use gdnative::prelude::*;
+use log::*;
+use logging::init_logging;
 
 use crate::{
     about_popup::AboutPopup, global_holder::GlobalHolder, image_holder::ImageHolder,
@@ -22,6 +25,13 @@ use crate::{
 };
 
 fn init(handle: InitHandle) {
+    match init_logging() {
+        Ok(()) => {}
+        Err(err) => {
+            godot_print!("Failed to initialize logger: {}", err);
+        }
+    }
+
     handle.add_class::<ImageSaver>();
     handle.add_class::<ImageHolder>();
     handle.add_class::<ImageProcessor>();
@@ -29,8 +39,8 @@ fn init(handle: InitHandle) {
     handle.add_class::<SpritesheetGenerator>();
     handle.add_class::<AboutPopup>();
 
-    godot_print!(
-        "---\n{} v{}\n{} ({})\nBuild date: {} {}\n---",
+    info!(
+        "\n---\n{} v{}\n{} ({})\nBuild date: {} {}\n---",
         env!("CARGO_PKG_NAME"),
         env!("CARGO_PKG_VERSION"),
         env!("VERGEN_CARGO_TARGET_TRIPLE"),

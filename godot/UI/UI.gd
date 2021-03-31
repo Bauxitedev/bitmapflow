@@ -108,6 +108,8 @@ func show_spritesheet_config_load_dialog(filename):
 	
 	add_bg_behind(spritesheet_dialog)
 	
+	spritesheet_dialog.connect("error_occured", self, "_on_SpriteSheetConfigLoad_error_occured")
+	
 	yield(spritesheet_dialog, "spritesheet_confirmed")
 	var rects = spritesheet_dialog.rects
 	emit_signal("loaded_spritesheet", filename, rects)
@@ -199,6 +201,9 @@ func _on_ImageProcessor_made_progress(progress):
 	progressbar.value = progress
 
 func _on_ImageProcessor_error_occured(error):
+	progressbar.error = error
+	
+func _on_SpriteSheetConfigLoad_error_occured(error):
 	progressbar.error = error
 	
 func _on_Sidebar_img_params_changed(img_params):

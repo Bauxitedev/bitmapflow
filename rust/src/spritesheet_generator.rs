@@ -2,6 +2,7 @@ use std::time::Instant;
 
 use gdnative::{api::ImageTexture, prelude::*};
 use image::{imageops::replace, ImageBuffer, RgbaImage};
+use log::*;
 
 use crate::{datatypes::SpritesheetGenerationParams, utility::do_with_image_holder};
 
@@ -48,7 +49,7 @@ impl SpritesheetGenerator {
             }
             let duration = start.elapsed();
 
-            println!("Time elapsed in replacement is: {:?}", duration);
+            info!("Time elapsed in replacement is: {:?}", duration);
 
             let data: Vec<u8> = spritesheet
                 .pixels()

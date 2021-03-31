@@ -4,6 +4,7 @@ use anyhow::Result;
 use gdnative::{api::ImageTexture, prelude::*};
 use gif::{Encoder, Repeat};
 use image::{ImageBuffer, Rgba};
+use log::*;
 use rayon::prelude::*;
 
 use crate::{frame::texture_to_image, utility::do_with_image_holder};
@@ -75,7 +76,7 @@ impl ImageSaver {
             let mut encoder = Encoder::new(&mut image, width as u16, height as u16, &[])?;
             encoder.set_repeat(Repeat::Infinite)?;
 
-            godot_print!("Saving gif with frame delay = {}csec...", delay_csec);
+            info!("Saving gif with frame delay = {}csec...", delay_csec);
 
             let gif_frames: Vec<_> = frames
                 .par_iter()
@@ -154,13 +155,13 @@ impl ImageSaver {
 
     fn save_spritesheet(
         &mut self,
-        filename: String,
+        filename: &String,
         tex: Ref<ImageTexture, Shared>,
     ) -> Result<String> {
         let img: ImageBuffer<Rgba<u8>, Vec<u8>> = texture_to_image(tex);
         img.save(filename.clone())?;
 
-        Ok(filename)
+        Ok(filename.clone())
     }
 }
 
@@ -172,6 +173,8 @@ impl ImageSaver {
             Ok(()) => {
                 let filename_only = Path::new(&filename).file_name().unwrap().to_str().unwrap();
 
+                info!("Saved gif succesfully: {:?}", filename);
+
                 owner.emit_signal(
                     "image_save_success",
                     &[Variant::from_string_array(&TypedArray::from_vec(vec![
@@ -180,7 +183,8 @@ impl ImageSaver {
                 )
             }
             Err(err) => {
-                let err_str = format!("Failed to save gif: {}", err.to_string());
+                let err_str = format!("Failed to save gif as {}: {}", filename, err.to_string());
+                warn!("{}", err_str);
                 owner.emit_signal("image_save_failure", &[Variant::from_str(err_str)])
             }
         };
@@ -189,21 +193,25 @@ impl ImageSaver {
     #[export]
     fn _on_ui_exported_separate_frames(&mut self, owner: &Base, base_filename: String) {
         match self.save_separate_frames(&base_filename) {
-            Ok(filenames) => owner.emit_signal(
-                "image_save_success",
-                &[Variant::from_string_array(
-                    &filenames
-                        .iter()
-                        .map(|s| {
-                            let filename_only =
-                                Path::new(&s).file_name().unwrap().to_str().unwrap();
-                            GodotString::from(filename_only)
-                        })
-                        .collect(),
-                )],
-            ),
+            Ok(filenames) => {
+                let strings = &filenames
+                    .iter()
+                    .map(|s| {
+                        let filename_only = Path::new(&s).file_name().unwrap().to_str().unwrap();
+                        GodotString::from(filename_only)
+                    })
+                    .collect();
+                info!("Saved separate frames succesfully: {:?}", filenames);
+                owner.emit_signal("image_save_success", &[Variant::from_string_array(strings)])
+            }
             Err(err) => {
-                let err_str = format!("Failed to save separate frames: {}", err.to_string());
+                let err_str = format!(
+                    "Failed to save separate frames as {}: {}",
+                    base_filename,
+                    err.to_string()
+                );
+                warn!("{}", err_str);
+
                 owner.emit_signal("image_save_failure", &[Variant::from_str(err_str)])
             }
         };
@@ -216,9 +224,11 @@ impl ImageSaver {
         filename: String,
         tex: Ref<ImageTexture, Shared>,
     ) {
-        match self.save_spritesheet(filename, tex) {
+        match self.save_spritesheet(&filename, tex) {
             Ok(filename) => {
                 let filename_only = Path::new(&filename).file_name().unwrap().to_str().unwrap();
+
+                info!("Saved spritesheet succesfully: {:?}", filename);
 
                 owner.emit_signal(
                     "image_save_success",
@@ -228,7 +238,12 @@ impl ImageSaver {
                 )
             }
             Err(err) => {
-                let err_str = format!("Failed to save spritesheet: {}", err.to_string());
+                let err_str = format!(
+                    "Failed to save spritesheet as {}: {}",
+                    filename,
+                    err.to_string()
+                );
+                warn!("{}", err_str);
                 owner.emit_signal("image_save_failure", &[Variant::from_str(err_str)])
             }
         };

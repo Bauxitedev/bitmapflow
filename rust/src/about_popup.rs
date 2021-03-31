@@ -2,6 +2,7 @@ use gdnative::{
     api::{PopupDialog, RichTextLabel, OS},
     prelude::*,
 };
+use log::*;
 
 type Base = PopupDialog;
 #[derive(NativeClass, Default)]
@@ -39,7 +40,7 @@ impl AboutPopup {
     #[export]
     fn _on_followme_meta_clicked(&mut self, _owner: &Base, meta: String) {
         if let Err(err) = OS::godot_singleton().shell_open(meta) {
-            godot_warn!("Failed to open meta: {}", err);
+            warn!("Failed to open meta: {}", err);
         }
     }
 }

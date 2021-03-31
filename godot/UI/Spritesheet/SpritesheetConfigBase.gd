@@ -1,6 +1,7 @@
 extends ConfirmationDialog
 
 signal spritesheet_confirmed
+signal error_occured
 
 var tex: ImageTexture
 var spritesheet_params = {}
@@ -74,3 +75,7 @@ func show_error_popup(err):
 	yield(err_dialog,"popup_hide")
 	err_dialog.queue_free()
 	
+func error_occured(err_str):
+	print(err_str)	
+	emit_signal("error_occured", err_str)
+	hide()

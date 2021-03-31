@@ -101,7 +101,11 @@ func set_img_filename(value):
 	
 	tex = ImageTexture.new()
 	var img = Image.new()
-	img.load(img_filename)
+	var err = img.load(img_filename)
+	if err != OK:
+		var err_str = "Failed to load spritesheet '%s': error code %s" % [img_filename, err]
+		call_deferred("error_occured", err_str)
+		return
 	tex.create_from_image(img)
 	
 	# NOTE, cannot use onready here since set_img_filename is called before ready()
@@ -152,7 +156,7 @@ func update_rects():
 
 func _on_SpritesheetView_mouse_clicked_at(pos):
 	set_ui_value("frame_offset_x", clamp(round(pos.x), 0.0, tex.get_width() - spritesheet_params.frame_width))
-	set_ui_value("frame_offset_y",clamp(round(pos.y), 0.0, tex.get_height() - spritesheet_params.frame_height))
+	set_ui_value("frame_offset_y", clamp(round(pos.y), 0.0, tex.get_height() - spritesheet_params.frame_height))
 
 func get_confirmation_error():
 	if len(rects) == 0:

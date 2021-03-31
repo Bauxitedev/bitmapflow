@@ -82,11 +82,12 @@ checksum = "cf1de2fe8c75bc145a2f577add951f8134889b4795d47466a54a5c846d691693"
 
 [[package]]
 name = "bitmapflow-rust"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "anyhow",
  "approx",
  "bracket-color",
+ "chrono",
  "crossbeam",
  "crossbeam-channel",
  "gdnative",
@@ -95,6 +96,7 @@ dependencies = [
  "image",
  "imgref",
  "itertools",
+ "log",
  "once_cell",
  "opencv",
  "rand",
