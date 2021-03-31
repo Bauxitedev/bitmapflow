@@ -46,9 +46,15 @@ jobs:
         args: --all-features --manifest-path rust/Cargo.toml
         # see https://github.com/actions-rs/clippy-check/issues/28
         
-    - name: markdown-link-check
-      uses: gaurav-nelson/github-action-markdown-link-check@1.0.12
-      with:
-        folder-path: .
-        config-file: .github/workflows/markdown-link-check-config.json
+  markdown-link-check:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+        - name: markdown-link-check
+          uses: gaurav-nelson/github-action-markdown-link-check@1.0.12
+          with:
+            folder-path: .
+            config-file: .github/workflows/markdown-link-check-config.json
 
