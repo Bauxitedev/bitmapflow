@@ -37,6 +37,15 @@ impl ImageHolder {
                 usage: PropertyUsage::DEFAULT,
             }],
         });
+        builder.add_signal(Signal {
+            name: "image_load_failure",
+            args: &[SignalArgument {
+                name: "error",
+                default: Variant::from_str("Dummy error"),
+                export_info: ExportInfo::new(VariantType::GodotString),
+                usage: PropertyUsage::DEFAULT,
+            }],
+        });
     }
 
     fn update_input_frames(&mut self, owner: TRef<'_, Base>, frames: Frames) {
@@ -144,7 +153,9 @@ impl ImageHolder {
                 self.update_input_frames(owner, frames);
             }
             Err(err) => {
-                error!("Failed to load gif called {}: {:?}", filename, err);
+                let err_str = format!("Failed to load gif called {}: {:?}", filename, err);
+                error!("{}", err_str);
+                owner.emit_signal("image_load_failure", &[Variant::from_str(err_str)]);
             }
         }
     }
@@ -157,10 +168,12 @@ impl ImageHolder {
                 self.update_input_frames(owner, frames);
             }
             Err(err) => {
-                error!(
+                let err_str = format!(
                     "Failed to load separate frames called {:?}: {:?}",
                     filenames, err
                 );
+                error!("{}", err_str);
+                owner.emit_signal("image_load_failure", &[Variant::from_str(err_str)]);
             }
         }
     }
@@ -178,7 +191,9 @@ impl ImageHolder {
                 self.update_input_frames(owner, frames);
             }
             Err(err) => {
-                error!("Failed to load spritesheet called {}: {:?}", filename, err);
+                let err_str = format!("Failed to load spritesheet called {}: {:?}", filename, err);
+                error!("{}", err_str);
+                owner.emit_signal("image_load_failure", &[Variant::from_str(err_str)]);
             }
         }
     }

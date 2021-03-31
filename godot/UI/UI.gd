@@ -200,7 +200,11 @@ func _on_ImageProcessor_image_processed(frames):
 func _on_ImageProcessor_made_progress(progress):
 	progressbar.value = progress
 
+# TODO combine these 3 methods into 1
 func _on_ImageProcessor_error_occured(error):
+	progressbar.error = error
+	
+func _on_ImageHolder_error_occured(error):
 	progressbar.error = error
 	
 func _on_SpriteSheetConfigLoad_error_occured(error):

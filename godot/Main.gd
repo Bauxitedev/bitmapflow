@@ -11,8 +11,9 @@ func _enter_tree():
 	# So, that would cause the signal to be sent BEFORE the signal is connected to anything.
 	# So nothing happens.
 	
-	ImageHolder.connect("image_loaded", ImageProcessor, "_on_imageholder_image_loaded")
-	ImageHolder.connect("image_loaded", $UI, "_on_ImageHolder_image_loaded")
+	ImageHolder.connect("image_loaded",       ImageProcessor, "_on_imageholder_image_loaded")
+	ImageHolder.connect("image_loaded",       $UI, "_on_ImageHolder_image_loaded")
+	ImageHolder.connect("image_load_failure", $UI, "_on_ImageHolder_error_occured")
 	
 	ImageProcessor.connect("image_processed", ImageHolder, "_on_imageprocessor_image_processed")
 	ImageProcessor.connect("error_occured",   $UI,         "_on_ImageProcessor_error_occured")

@@ -303,7 +303,7 @@ impl ImageProcessor {
         if let Ok(maybe_err) = self.error_channel.1.try_recv() {
             owner.emit_signal(
                 "error_occured",
-                &[maybe_err.map_or(Variant::new(), |str| str.replace('\n', "").to_variant())],
+                &[maybe_err.map_or(Variant::new(), |str| str.to_variant())],
             );
         }
     }

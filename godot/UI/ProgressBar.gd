@@ -16,8 +16,9 @@ func set_error(err):
 		$ErrorContainer.hide()
 	else:
 		$ErrorContainer.show()
-		$ErrorContainer/PanelContainer/Label.text = "ERROR: " + err
+		$ErrorContainer/PanelContainer/Label.text = "ERROR: " + err.replace("\n", " → ")
 		
+		$MessageContainer.hide()
 		$Tween.stop_all()
 		$ErrorContainer.modulate = Color.white
 		$Tween.interpolate_property($ErrorContainer, "modulate", Color.white, Color.transparent, 5.0, Tween.TRANS_SINE, Tween.EASE_IN_OUT, 8.0)
@@ -31,6 +32,7 @@ func set_message(msg):
 		$MessageContainer.show()
 		$MessageContainer/PanelContainer/Label.text =  msg
 		
+		$ErrorContainer.hide()
 		$Tween.stop_all()
 		$MessageContainer.modulate = Color.white
 		$Tween.interpolate_property($MessageContainer, "modulate", Color.white, Color.transparent, 5.0, Tween.TRANS_SINE, Tween.EASE_IN_OUT, 8.0)
