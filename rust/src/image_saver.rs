@@ -155,13 +155,13 @@ impl ImageSaver {
 
     fn save_spritesheet(
         &mut self,
-        filename: &String,
+        filename: &str,
         tex: Ref<ImageTexture, Shared>,
     ) -> Result<String> {
         let img: ImageBuffer<Rgba<u8>, Vec<u8>> = texture_to_image(tex);
-        img.save(filename.clone())?;
+        img.save(filename.to_string())?;
 
-        Ok(filename.clone())
+        Ok(filename.to_string())
     }
 }
 

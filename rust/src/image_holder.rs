@@ -44,7 +44,7 @@ impl ImageHolder {
         owner.emit_signal("image_loaded", &[self.input_frames.to_variant()]);
     }
 
-    fn load_gif(&mut self, filename: &String) -> Result<Frames, Error> {
+    fn load_gif(&mut self, filename: &str) -> Result<Frames, Error> {
         let file = File::open(filename)?;
         let mut gif_opts = gif::DecodeOptions::new();
         gif_opts.set_color_output(gif::ColorOutput::Indexed);
