@@ -70,10 +70,12 @@ func load_gif():
 	dialog.set_filters(PoolStringArray(["*.gif ; GIF Images"]))
 	dialog.mode = FileDialog.MODE_OPEN_FILE
 	
-	yield(dialog, "file_selected")
+	var filename = yield(dialog, "file_selected")
+	# NOTE: dialog.current_path removes C: for some reason so it tries to use a non-existing path. See https://github.com/godotengine/godot/issues/45822
+	# Solution: use the result of "yield" instead of dialog.current_path
 	
-	last_dir = dialog.current_dir
-	var filename = dialog.current_path.replace("res://", "")
+	last_dir = filename.get_base_dir()
+
 	emit_signal("loaded_gif", filename)
 	clear_texture()	
 	
@@ -82,8 +84,9 @@ func load_separate_frames():
 	dialog.set_filters(PoolStringArray(["*.png ; PNG Frames"]))
 	dialog.mode = FileDialog.MODE_OPEN_FILES
 	
-	var filenames =  yield(dialog, "files_selected")
-	last_dir = dialog.current_dir
+	var filenames = yield(dialog, "files_selected")
+	
+	last_dir = filename.get_base_dir()
 
 	emit_signal("loaded_separate_frames", filenames)
 	clear_texture()
@@ -93,10 +96,9 @@ func load_spritesheet():
 	dialog.set_filters(PoolStringArray(["*.png ; PNG Spritesheet", "*.jpg ; JPG Spritesheet"]))
 	dialog.mode = FileDialog.MODE_OPEN_FILE
 	
-	yield(dialog, "file_selected")
+	var filename = yield(dialog, "file_selected")
 	
-	last_dir = dialog.current_dir
-	var filename = dialog.current_path.replace("res://", "") 
+	last_dir = filename.get_base_dir()
 	
 	show_spritesheet_config_load_dialog(filename)
 	
@@ -122,10 +124,9 @@ func export_gif():
 	dialog.set_filters(PoolStringArray(["*.gif ; GIF Image"]))
 	dialog.mode = FileDialog.MODE_SAVE_FILE
 	
-	yield(dialog, "file_selected")
+	var filename = yield(dialog, "file_selected")
 	
-	last_dir = dialog.current_dir
-	var filename = dialog.current_path.replace("res://", "") 
+	last_dir = filename.get_base_dir()
 	
 	var speed_ratio = ImageHolder.get_speed_ratio()
 	var output_fps = GlobalHolder.fps * speed_ratio
@@ -136,10 +137,10 @@ func export_separate_frames():
 	dialog.set_filters(PoolStringArray(["*.png ; PNG Frames"]))
 	dialog.mode = FileDialog.MODE_SAVE_FILE
 	
-	yield(dialog, "file_selected")
+	var filename = yield(dialog, "file_selected")
 	
-	last_dir = dialog.current_dir
-	var filename = dialog.current_path.replace("res://", "") 
+	last_dir = filename.get_base_dir()
+
 	emit_signal("exported_separate_frames", filename)
 	
 func export_spritesheet():
@@ -147,10 +148,9 @@ func export_spritesheet():
 	dialog.set_filters(PoolStringArray(["*.png ; PNG Spritesheet"]))
 	dialog.mode = FileDialog.MODE_SAVE_FILE
 	
-	yield(dialog, "file_selected")
+	var filename = yield(dialog, "file_selected")
 	
-	last_dir = dialog.current_dir
-	var filename = dialog.current_path.replace("res://", "") 
+	last_dir = filename.get_base_dir()
 	
 	show_spritesheet_config_save_dialog(filename)
 	
