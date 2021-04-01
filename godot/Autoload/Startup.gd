@@ -19,4 +19,4 @@ func check_rustlib():
 		OS.alert("ERROR: Failed to find %s! Did you extract the zip file before running Bitmapflow?" % library_path);
 		get_tree().quit()
 	else:
-		print("RustLibrary %s found" % library_path)
+		Logger.info("RustLibrary %s found" % library_path)

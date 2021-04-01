@@ -76,6 +76,6 @@ func show_error_popup(err):
 	err_dialog.queue_free()
 	
 func error_occured(err_str):
-	print(err_str)	
+	Logger.error(err_str)	
 	emit_signal("error_occured", err_str)
 	hide()

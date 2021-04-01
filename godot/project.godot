@@ -29,6 +29,7 @@ SpritesheetGenerator="*res://Autoload/SpritesheetGenerator.gdns"
 ImageHolder="*res://Autoload/ImageHolder.gdns"
 ImageProcessor="*res://Autoload/ImageProcessor.gdns"
 ImageSaver="*res://Autoload/ImageSaver.gdns"
+Logger="*res://Autoload/Logger.gdns"
 
 [display]
 

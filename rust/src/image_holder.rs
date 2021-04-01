@@ -151,6 +151,7 @@ impl ImageHolder {
             Ok(frames) => {
                 self.output_frames.clear();
                 self.update_input_frames(owner, frames);
+                info!("Loaded gif: {}", filename);
             }
             Err(err) => {
                 let err_str = format!("Failed to load gif called {}: {:?}", filename, err);
@@ -166,6 +167,7 @@ impl ImageHolder {
             Ok(frames) => {
                 self.output_frames.clear();
                 self.update_input_frames(owner, frames);
+                info!("Loaded separate frames: {:?}", filenames);
             }
             Err(err) => {
                 let err_str = format!(
@@ -189,6 +191,7 @@ impl ImageHolder {
             Ok(frames) => {
                 self.output_frames.clear();
                 self.update_input_frames(owner, frames);
+                info!("Loaded spritesheet: {}", filename);
             }
             Err(err) => {
                 let err_str = format!("Failed to load spritesheet called {}: {:?}", filename, err);

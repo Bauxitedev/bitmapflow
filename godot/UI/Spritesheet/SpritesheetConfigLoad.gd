@@ -140,7 +140,7 @@ func update_rects():
 			if total_rect.encloses(rect):
 				rects.push_back(rect)
 			else:
-				print("warning: rects exceed image")
+				Logger.warn("warning: rects exceed image")
 				
 			rect_x += rect_w + spritesheet_params.frame_margin_x
 			rects_on_this_row += 1
@@ -150,7 +150,7 @@ func update_rects():
 				rects_on_this_row = 0
 				
 	else:
-		print("warning: can't fit any rect in the image")
+		Logger.warn("warning: can't fit any rect in the image")
 		
 	emit_signal("rects_changed", rects)	
 

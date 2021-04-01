@@ -16,11 +16,14 @@ mod utility;
 
 use gdnative::prelude::*;
 use log::*;
-use logging::init_logging;
 
 use crate::{
-    about_popup::AboutPopup, global_holder::GlobalHolder, image_holder::ImageHolder,
-    image_processor::ImageProcessor, image_saver::ImageSaver,
+    about_popup::AboutPopup,
+    global_holder::GlobalHolder,
+    image_holder::ImageHolder,
+    image_processor::ImageProcessor,
+    image_saver::ImageSaver,
+    logging::{init_logging, Logger},
     spritesheet_generator::SpritesheetGenerator,
 };
 
@@ -38,6 +41,7 @@ fn init(handle: InitHandle) {
     handle.add_class::<GlobalHolder>();
     handle.add_class::<SpritesheetGenerator>();
     handle.add_class::<AboutPopup>();
+    handle.add_class::<Logger>();
 
     info!(
         "\n---\n{} v{}\n{} ({})\nBuild date: {} {}\n---",

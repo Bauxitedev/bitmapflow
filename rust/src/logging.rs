@@ -1,7 +1,14 @@
 use chrono::prelude::*;
-use gdnative::*;
-use log::{Level, LevelFilter, Log, Metadata, Record, SetLoggerError};
+use gdnative::prelude::*;
+use log::*;
+
 struct GodotLogger;
+
+static GODOT_LOGGER: GodotLogger = GodotLogger;
+
+pub fn init_logging() -> Result<(), SetLoggerError> {
+    log::set_logger(&GODOT_LOGGER).map(|()| log::set_max_level(LevelFilter::Info))
+}
 
 impl Log for GodotLogger {
     fn enabled(&self, metadata: &Metadata) -> bool {
@@ -50,8 +57,44 @@ impl Log for GodotLogger {
     fn flush(&self) {}
 }
 
-static GODOT_LOGGER: GodotLogger = GodotLogger;
+//////////////////////////////////////////////////////////
 
-pub fn init_logging() -> Result<(), SetLoggerError> {
-    log::set_logger(&GODOT_LOGGER).map(|()| log::set_max_level(LevelFilter::Info))
+type Base = Node;
+//Base refers to the type Logger inherits from. In this case it's Node (because #[inherit(Node)])
+
+#[derive(NativeClass)]
+#[inherit(Base)]
+pub struct Logger {}
+
+impl Logger {
+    fn new(_owner: &Base) -> Self {
+        Logger {}
+    }
+}
+
+#[methods]
+impl Logger {
+    //Allows logging from GDscript
+
+    fn log(&self, level: Level, msg: String) {
+        GODOT_LOGGER.log(
+            &Record::builder()
+                .level(level)
+                .file(Some("(gdscript)"))
+                .args(format_args!("{}", msg))
+                .build(),
+        );
+    }
+    #[export]
+    fn info(&mut self, _owner: &Base, msg: String) {
+        self.log(Level::Info, msg);
+    }
+    #[export]
+    fn warn(&mut self, _owner: &Base, msg: String) {
+        self.log(Level::Warn, msg);
+    }
+    #[export]
+    fn error(&mut self, _owner: &Base, msg: String) {
+        self.log(Level::Error, msg);
+    }
 }
