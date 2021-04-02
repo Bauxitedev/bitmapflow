@@ -46,6 +46,12 @@ jobs:
         args: --all-features --manifest-path rust/Cargo.toml
         # see https://github.com/actions-rs/clippy-check/issues/28
         
+    - name: Upload bitmapflow-linux-so
+      uses: actions/upload-artifact@v2
+      with:
+          name: bitmapflow-linux-so
+          path: target/release/libbitmapflow_rust.so
+        
   markdown-link-check:
 
     runs-on: ubuntu-latest
@@ -58,3 +64,35 @@ jobs:
             folder-path: .
             config-file: .github/workflows/markdown-link-check-config.json
 
+
+ # See https://github.com/aBARICHELLO/godot-ci/blob/master/.github/workflows/godot-ci.yml
+  export-linux:
+    runs-on: ubuntu-latest
+    container:
+        image: barichello/godot-ci:3.2.3
+    steps:
+      - name: Download bitmapflow-linux-so
+        uses: actions/download-artifact@v2
+        with: 
+            name:  bitmapflow-linux-so
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      - name: Linux Build
+        run: |
+          mkdir -v -p build/linux
+          cd $EXPORT_NAME
+          godot -v --export "Linux/X11" ../build/linux/$EXPORT_NAME.x86_64
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: linux
+          path: build/linux
+
+
+            
