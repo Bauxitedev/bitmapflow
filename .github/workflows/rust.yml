@@ -36,7 +36,7 @@ jobs:
             override: true
       
     - name: Build
-      run: cargo build --verbose
+      run: cargo build --release --verbose
       
     - name: Clippy
       uses: actions-rs/clippy-check@v1.0.7
@@ -50,6 +50,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
           name: bitmapflow-linux-so
+          if-no-files-found: error
           path: rust/target/release/libbitmapflow_rust.so
         
   markdown-link-check:
