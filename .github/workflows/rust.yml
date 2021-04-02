@@ -67,10 +67,13 @@ jobs:
 
  # See https://github.com/aBARICHELLO/godot-ci/blob/master/.github/workflows/godot-ci.yml
   export-linux:
+    needs: build
     runs-on: ubuntu-latest
     container:
         image: barichello/godot-ci:3.2.3
+        
     steps:
+    
       - name: Download bitmapflow-linux-so
         uses: actions/download-artifact@v2
         with: 
