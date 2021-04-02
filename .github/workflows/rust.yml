@@ -50,7 +50,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
           name: bitmapflow-linux-so
-          path: target/release/libbitmapflow_rust.so
+          path: rust/target/release/libbitmapflow_rust.so
         
   markdown-link-check:
 
