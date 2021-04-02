@@ -86,7 +86,7 @@ func load_separate_frames():
 	
 	var filenames = yield(dialog, "files_selected")
 	
-	last_dir = filename.get_base_dir()
+	last_dir = filenames[0].get_base_dir()
 
 	emit_signal("loaded_separate_frames", filenames)
 	clear_texture()
