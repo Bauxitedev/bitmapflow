@@ -8,6 +8,8 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
+  GODOT_VERSION: 3.2.3
+  EXPORT_NAME: bitmapflow
   
 defaults:
   run:
@@ -90,7 +92,7 @@ jobs:
       - name: Linux Build
         run: |
           mkdir -v -p build/linux
-          cd $EXPORT_NAME
+          cd godot
           godot -v --export "Linux/X11" ../build/linux/$EXPORT_NAME.x86_64
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
