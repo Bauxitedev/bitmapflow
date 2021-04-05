@@ -94,6 +94,7 @@ jobs:
           
       - name: Debug godot export templates
         run: |
+          apt-get update
           apt install tree
           tree ~/.local/share/godot/
           
