@@ -81,19 +81,28 @@ jobs:
         uses: actions/download-artifact@v2
         with: 
             name:  bitmapflow-linux-so
+            
       - name: Checkout
         uses: actions/checkout@v2
         with:
           lfs: true
+          
       - name: Setup
         run: |
           mkdir -v -p ~/.local/share/godot/templates
           mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+          
+      - name: Debug godot export templates
+        run: |
+          sudo apt install tree
+          tree ~/.local/share/godot/
+          
       - name: Linux Build
         working-directory: godot # TODO the build/linux folder should be in the default directory, not in "godot"
         run: |
           mkdir -v -p build/linux
           godot -v --export "Linux/X11" build/linux/$EXPORT_NAME.x86_64
+          
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
