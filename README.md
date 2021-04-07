@@ -67,7 +67,7 @@ I'm going to assume you're on Windows, but technically speaking this should work
 
 Getting it to work:
 
-1. Go to the `rust` folder and run `cargo build --release`.
+1. Go to the `rust` folder and run `cargo build --release`. (Note: the crate requires that it is inside of a Git repostory, otherwise it will fail to build. This may not be the case if you downloaded the source code from the Releases page. In that case, run `git init` to create a `.git` folder as a workaround)
 2. After a while this should produce a DLL file called `bitmapflow_rust.dll` in the `rust/target/release` folder (On Linux this file will be called `libbitmapflow_rust.so`). Copy this file to the `godot` folder.
 3. Now open Godot and run the project in the `godot` folder.
 
