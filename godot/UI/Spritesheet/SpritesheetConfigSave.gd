@@ -1,11 +1,8 @@
 extends "res://UI/Spritesheet/SpritesheetConfigBase.gd"
 
-
 func _ready():
 	
 	var spritesheet_params_ui = {
-		
-		
 		"frames_per_row": {
 			"label": "Frames per row",
 			"ui_type": "number",
@@ -13,11 +10,13 @@ func _ready():
 			"max": 1000,
 			"default": 10
 		},
-		
-
 	}
 	
 	setup_spritesheet_params_ui(spritesheet_params_ui)
+	
+	self.spritesheet_params = SpritesheetGenerator.get_optimal_spritesheet_params()
+	set_ui_value("frames_per_row", spritesheet_params["frames_per_row"])
+	
 	update_spritesheet()
 	
 func _on_value_changed(key, value):

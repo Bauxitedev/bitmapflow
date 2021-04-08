@@ -1,6 +1,7 @@
 use std::ops::Deref;
 
 use gdnative::{
+    api::JSON,
     core_types::{FromVariant, FromVariantError, Variant, VariantType},
     prelude::*,
 };
@@ -73,6 +74,21 @@ impl FromVariant for SpritesheetGenerationParams {
                 })?;
         let json = dict.to_json().to_string();
         serde_json::from_str(&json).map_err(|e| FromVariantError::Custom(e.to_string()))
+    }
+}
+
+impl ToVariant for SpritesheetGenerationParams {
+    fn to_variant(&self) -> Variant {
+        let json = serde_json::to_string(self)
+            .expect("failed to serialize SpritesheetGenerationParams as JSON");
+
+        let variant = JSON::godot_singleton()
+            .parse(json)
+            .expect("failed to parse JSON");
+
+        let variant = unsafe { variant.assume_safe() }.result();
+        assert!(variant.get_type() == VariantType::Dictionary);
+        variant
     }
 }
 
