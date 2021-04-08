@@ -163,9 +163,9 @@ impl ImageProcessor {
                         flow_multipliers.push(i as f32 / (inbetweens + 1) as f32);
                     }
 
-                    //Copy the last frame reference to the beginning of the vector so it loops
+                    //Copy the first frame reference to the end of the vector so it loops
                     if loop_seamlessly {
-                        input_frames.insert(0, input_frames.last().unwrap());
+                        input_frames.push(input_frames.first().unwrap());
                         frame_count = input_frames.len();
                     } else {
                         //Else duplicate the last frame reference
