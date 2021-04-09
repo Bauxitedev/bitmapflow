@@ -79,6 +79,10 @@ On Windows, the program crashes after the splash screen, or I get an error about
 
 - Install the [Visual Studio Redistributable](https://aka.ms/vs/16/release/vc_redist.x64.exe).
 
+On Windows, when exporting I get an error similar to "Failed to save spritesheet as [name]; Access is denied (os error 5)."
+
+- Disable your virus scanner and try again. If you don't have a virus scanner enabled, you may not have permission to export into your selected folder (e.g. the Program Files folder may require admin privileges), so try exporting to your own users folder instead, or the Desktop, for example.
+
 I get some weird OpenCV error about sizes or something after loading my sprite?
 
 - Try reducing the "layers" parameter in the Advanced parameters section, or click the big Reset button at the bottom of the sidebar. If that doesn't work, your sprite may be too small. Try using a bigger sprite. Also try using SimpleFlow instead of DenseRLOF, it's more versatile and breaks less often.

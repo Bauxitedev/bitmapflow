@@ -3,5 +3,6 @@
 [resource]
 entry/Windows.64 = "res://bitmapflow_rust.dll"
 entry/X11.64 = "res://libbitmapflow_rust.so"
+entry/Server = "res://libbitmapflow_rust.so"
 dependency/Windows.64 = [  ]
 dependency/X11.64 = [  ]
