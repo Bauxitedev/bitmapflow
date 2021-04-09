@@ -94,7 +94,7 @@ jobs:
         run: |
           apt-get update
           apt install tree
-          tree ~/.local/share/godot/
+          tree ~
           
       - name: Linux Build
         working-directory: godot # TODO the build/linux folder should be in the default directory, not in "godot"
