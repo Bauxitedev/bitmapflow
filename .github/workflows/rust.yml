@@ -31,7 +31,7 @@ jobs:
     - name: Install Rust toolchain
       uses: actions-rs/toolchain@v1
       with:
-            toolchain: nightly
+            toolchain: nightly-2021-03-11
             components: clippy
             override: true
       
@@ -42,7 +42,7 @@ jobs:
       uses: actions-rs/clippy-check@v1.0.7
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        toolchain: nightly 
+        toolchain: nightly-2021-03-11 
         args: --all-features --manifest-path rust/Cargo.toml
         # see https://github.com/actions-rs/clippy-check/issues/28
         
