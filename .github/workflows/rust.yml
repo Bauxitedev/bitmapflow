@@ -75,15 +75,16 @@ jobs:
         
     steps:
     
-      - name: Download bitmapflow-linux-so
-        uses: actions/download-artifact@v2
-        with: 
-            name:  bitmapflow-linux-so
-            
+    # NOTE: checkout must be the VERY FIRST STEP! otherwise it will delete all previous files in the workflow directory!!!
       - name: Checkout
         uses: actions/checkout@v2
         with:
           lfs: true
+          
+      - name: Download bitmapflow-linux-so
+        uses: actions/download-artifact@v2
+        with: 
+            name:  bitmapflow-linux-so
           
       - name: Setup
         run: |
