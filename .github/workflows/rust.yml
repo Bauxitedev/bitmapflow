@@ -90,15 +90,19 @@ jobs:
           mkdir -v -p ~/.local/share/godot/templates
           mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
           
-      - name: Debug godot export templates
-        run: |
-          find . -maxdepth 6 -type d -ls
+ #     - name: Debug godot export templates
+ #       run: |
+ #         find . -maxdepth 6 -type d -ls
           
       - name: Linux Build
         working-directory: godot # TODO the build/linux folder should be in the default directory, not in "godot"
         run: |
           mkdir -v -p build/linux
           godot -v --export "Linux/X11" build/linux/$EXPORT_NAME.x86_64
+          
+      - name: Setup tmate session for debugging purposes
+        if: ${{ failure() }}
+        uses: mxschmitt/action-tmate@v3
           
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
