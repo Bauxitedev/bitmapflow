@@ -82,10 +82,10 @@ jobs:
           lfs: true
           
       - name: Apt-get update
-        run: sudo apt-get update
+        run: apt-get update
       
       - name: Install dependencies
-        run: DEBIAN_FRONTEND=noninteractive sudo apt install -y clang libclang-dev libopencv-contrib4.2 libopencv-dev curl 
+        run: DEBIAN_FRONTEND=noninteractive apt install -y clang libclang-dev libopencv-contrib4.2 libopencv-dev curl 
           
       - name: Download bitmapflow-linux-so
         uses: actions/download-artifact@v2
