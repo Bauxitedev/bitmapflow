@@ -92,9 +92,7 @@ jobs:
           
       - name: Debug godot export templates
         run: |
-          apt-get update
-          apt install tree
-          tree -a /
+          find . -maxdepth 6 -type d -ls
           
       - name: Linux Build
         working-directory: godot # TODO the build/linux folder should be in the default directory, not in "godot"
