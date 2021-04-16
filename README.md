@@ -13,7 +13,7 @@ Example:
 
 ## Usage
 
-[You can download the executables here](https://github.com/Bauxitedev/bitmapflow/releases). (Windows only for now). You'll need to install the [Visual Studio Redistributable](https://aka.ms/vs/16/release/vc_redist.x64.exe) first (unless you already have Visual Studio 2015 or newer installed). Other than that, it should work out of the box.
+[You can download the executables here](https://github.com/Bauxitedev/bitmapflow/releases). (Windows and Linux only for now). You'll need to install the [Visual Studio Redistributable](https://aka.ms/vs/16/release/vc_redist.x64.exe) first (unless you already have Visual Studio 2015 or newer installed). Other than that, it should work out of the box.
 
 [A video tutorial on how to use the program can be found here.](https://youtu.be/rC359dDAMiI)
 
