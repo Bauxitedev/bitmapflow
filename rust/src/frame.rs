@@ -9,7 +9,7 @@ use gdnative::{
 use image::{Rgba, RgbaImage};
 use imgref::Img;
 use opencv::{
-    core::{Vec2f, Vec3, CV_8UC3},
+    core::{Vec2f, Vec3b, CV_8UC3},
     prelude::*,
 };
 
@@ -106,9 +106,9 @@ impl From<&Frame> for Mat {
                 let [r, g, b, a] = input[(x, y)].0;
 
                 let bgr_color = if a < 30 {
-                    Vec3::from([0, 0, 0]) //TODO using pure black for (almost) transparent pixels, may go wrong for dark sprites? Try using a color that does not appear in the input images
+                    Vec3b::from([0, 0, 0]) //TODO using pure black for (almost) transparent pixels, may go wrong for dark sprites? Try using a color that does not appear in the input images
                 } else {
-                    Vec3::from([b, g, r]) //Note this is BGR, not RGB
+                    Vec3b::from([b, g, r]) //Note this is BGR, not RGB
                 };
 
                 **(mat
@@ -126,8 +126,8 @@ pub fn flow_mat_to_frame(input: &Mat) -> Frame {
     let w = input.size().unwrap().width as u32;
     let h = input.size().unwrap().height as u32;
 
-    assert!(input.depth().unwrap() == opencv::core::CV_32F);
-    assert!(input.channels().unwrap() == 2);
+    assert!(input.depth() == opencv::core::CV_32F);
+    assert!(input.channels() == 2);
 
     let to_byte = |f: f32| (f * 255.0).round() as u8;
 
