@@ -10,7 +10,7 @@ use image::RgbaImage;
 use itertools::{Either, Itertools};
 use log::*;
 use opencv::{
-    core::{Mat, MatTraitManual, Size2i, Vec2f, CV_32FC2},
+    core::{Mat, Size2i, Vec2f, CV_32FC2},
     optflow::{self, InterpolationType, RLOFOpticalFlowParameter},
     prelude::*,
 };
@@ -188,10 +188,10 @@ impl ImageProcessor {
                         let mat_a_bgr = Mat::from(*frame_a);
                         let mat_b_bgr = Mat::from(*frame_b);
 
-                        assert!(mat_a_bgr.depth().unwrap() == opencv::core::CV_8U);
-                        assert!(mat_b_bgr.depth().unwrap() == opencv::core::CV_8U);
-                        assert!(mat_a_bgr.channels().unwrap() == 3);
-                        assert!(mat_b_bgr.channels().unwrap() == 3);
+                        assert!(mat_a_bgr.depth() == opencv::core::CV_8U);
+                        assert!(mat_b_bgr.depth() == opencv::core::CV_8U);
+                        assert!(mat_a_bgr.channels() == 3);
+                        assert!(mat_b_bgr.channels() == 3);
                         assert!(
                             mat_a_bgr.size().unwrap() == mat_b_bgr.size().unwrap(),
                             "Frames don't have the same size: {:?} != {:?}",

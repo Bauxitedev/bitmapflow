@@ -68,7 +68,7 @@ I'm going to assume you're on Windows, but technically speaking this should work
 Getting it to work:
 
 1. Go to the `rust` folder and run `cargo build --release`. (Note: the crate requires that it is inside of a Git repostory, otherwise it will fail to build. This may not be the case if you downloaded the source code from the Releases page. In that case, run `git init` to create a `.git` folder as a workaround)
-2. After a while this should produce a DLL file called `bitmapflow_rust.dll` in the `rust/target/release` folder (On Linux this file will be called `libbitmapflow_rust.so`). Copy this file to the `godot` folder.
+2. After a while this should produce a DLL file called `bitmapflow_rust.dll` in the `rust/target/release` folder (On Linux this file will be called `libbitmapflow_rust.so`, or `libbitmapflow_rust.dylib` on MacOS). Copy this file to the `godot` folder.
 3. Now open Godot and run the project in the `godot` folder.
 
 That's all.
@@ -78,6 +78,20 @@ That's all.
 On Windows, the program crashes after the splash screen, or I get an error about vcruntime140.dll not being found. What to do?
 
 - Install the [Visual Studio Redistributable](https://aka.ms/vs/16/release/vc_redist.x64.exe).
+
+On macOS you're getting the ```dyld: Library not loaded: @rpath/libclang.dylib``` error during the build process.
+
+OS can't find ```libclang.dylib``` dynamic library because it resides in a non-standard path, set up the DYLD_FALLBACK_LIBRARY_PATH environment variable to point to the path where ```libclang.dylib``` can be found, e.g. for Command Line Tools:
+
+```
+export DYLD_FALLBACK_LIBRARY_PATH="$(xcode-select --print-path)/usr/lib/"
+```
+
+or XCode:
+
+```
+export DYLD_FALLBACK_LIBRARY_PATH="$(xcode-select --print-path)/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
+```
 
 On Windows, when exporting I get an error similar to "Failed to save spritesheet as [name]; Access is denied (os error 5)."
 

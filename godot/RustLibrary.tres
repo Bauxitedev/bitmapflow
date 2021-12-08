@@ -1,8 +1,9 @@
 [gd_resource type="GDNativeLibrary" format=2]
 
 [resource]
+entry/OSX.64 = "res://libbitmapflow_rust.dylib"
 entry/Windows.64 = "res://bitmapflow_rust.dll"
 entry/X11.64 = "res://libbitmapflow_rust.so"
-entry/Server = "res://libbitmapflow_rust.so"
+dependency/OSX.64 = [  ]
 dependency/Windows.64 = [  ]
 dependency/X11.64 = [  ]
